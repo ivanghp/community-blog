@@ -1,0 +1,87 @@
+﻿@model Activity.ServiceLayer.ViewModels.PostAndUserVM
+
+@{
+    ViewData["Title"] = "BasePage";
+}
+
+<h1>BasePage</h1>
+
+
+    @*<a asp-action="Create">Create New</a>*@
+    <a asp-controller="Post" asp-action="Create">Create a Post</a>
+    <form asp-action="SearchUser" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by name: <input asp-for="User.Name" class="form-control"/> @*<input type="text" name="userName" />*@
+                <input type="submit" value="Search" class="btn btn-default" /> 
+            </p>
+         </div>
+    </form>
+    @*<table class="table">
+        
+            <tr><td>@Html.DisplayNameFor(model => model.Name)</td></tr>
+        
+    </table>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.User.Name)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>*@
+
+        </tr>
+
+    </tbody>
+</table>
+<a asp-controller="User" asp-action="LogOut">LogOut</a>
+<div>
+    @*<partial name="~/Views/Post/Index.cshtml" />*@
+    <a asp-area="" asp-controller="Post" asp-action="Index">Posts</a> |
+    <a asp-area="" asp-controller="Post" asp-action="GetByUser">get all your posts</a>
+    @*@if (Model.Posts != null)
+        {
+            @foreach (var p in Model.Posts)
+            {
+                <div>
+                    <h3>@p.Title</h3>
+                    <p>@p.Description</p>
+                    <a asp-controller="Post" asp-action="Details"></a>
+                </div>
+            }
+        }*@
+</div>

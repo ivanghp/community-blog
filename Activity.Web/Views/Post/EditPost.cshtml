@@ -1,0 +1,40 @@
+﻿@model Activity.ServiceLayer.ViewModels.DeletePostVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@if (Model.Post.Thumbnail != null)
+{
+    <div class="row">
+        <div class="col-md-7">
+            <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="@Model.Post.Thumbnail" alt="">
+            </a>
+        </div>
+        <div class="col-md-5">
+            <h3>@Model.Post.Title</h3>
+            <p>@Model.Post.Description</p>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="EditPost1">Edit</a>
+        </div>
+        <span>location: @Model.Post.Location</span> &nbsp; <span>posted at: @Model.Post.CreatedAt</span>&nbsp;<span>posted by: @Model.Post.CreatedBy</span>&nbsp;@if (Model.Post.UpdatedAt != null)
+        {<span>updated at: @Model.Post.UpdatedAt</span>}&nbsp; @if (Model.Post.UpdatedAt != null)
+        {<span>updated by: @Model.Post.UpdatedBy</span>}
+
+    </div>
+    <hr />
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h3>@Model.Post.Title</h3>
+            <p>@Model.Post.Description</p>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="EditPost1">Edit</a>
+        </div>
+        <span>location: @Model.Post.Location</span>&nbsp;<span>posted at: @Model.Post.CreatedAt</span>&nbsp;<span>posted by: @Model.Post.CreatedBy</span>&nbsp;@if (Model.Post.UpdatedAt != null)
+        {<span>updated at: @Model.Post.UpdatedAt</span>} &nbsp;@if (Model.Post.UpdatedAt != null)
+        {<span>updated by: @Model.Post.UpdatedBy</span>}
+    </div>
+    <hr />
+}
